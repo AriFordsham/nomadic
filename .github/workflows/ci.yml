@@ -2,6 +2,6 @@ name: CI
 on: [push]
 jobs:
   build:
-    runs-on: migamake/stack-build-image:17.0
+    runs-on: ubuntu-latest
     steps:
-      - run: stack build
+      - uses: docker://migamake/stack-build-image:17
