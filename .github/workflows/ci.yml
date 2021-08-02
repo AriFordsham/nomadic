@@ -7,4 +7,8 @@ jobs:
       - uses: docker://migamake/stack-build-image:17.0
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
+        with:
+          paths:
+          - .stack-work/
+          - /home/runner/.stack
       - run: stack build
