@@ -1,0 +1,49 @@
+if [ -z "${BASH_VERSION}" ]; then
+  exec bash "$@"
+fi
+
+set -e
+
+POSITIONAL=()
+while [[ $# -gt 0 ]]; do
+  key="$1"
+
+  case $key in
+    --repo)
+      REPO="$2"
+      shift
+      shift
+      ;;
+    *)
+      POSITIONAL+=("$1")
+      shift
+      ;;
+  esac
+done
+
+set -- "${POSITIONAL[@]}"
+
+if [[ -z ${REPO+x} ]]; then
+  echo "no repo supplied."
+  exit 1
+fi
+
+case $1 in
+  install)  monadic-install $2 ;;
+  remove)   monadic-remove  $2 ;;
+  update)   monadic-update     ;;
+  populate) monadic-populate   ;;
+  *)
+    echo "Unrecognized command $1"
+    exit 1
+    ;;
+esac
+
+monadic-install {
+  nix copy --store $REPO $1
+  nix-env -iA "nixpkgs.$1"
+}
+
+monadic-remove {
+  nix-env -e $1
+}
