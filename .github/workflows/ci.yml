@@ -12,4 +12,5 @@ jobs:
           path: |
             .stack-work/
             /home/runner/.stack
-      - run: stack build
+      - run: curl -L https://nixos.org/nix/install | sh
+      - run: stack test
