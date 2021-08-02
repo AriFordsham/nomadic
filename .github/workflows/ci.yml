@@ -4,4 +4,4 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: docker://migamake/stack-build-image:17
+      - uses: docker://migamake/stack-build-image:17.0
