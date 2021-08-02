@@ -7,5 +7,5 @@ import System.Exit
 main :: IO ()
 main = hspec $ do
       it "installs a package" $ 
-        rawSystem "false" ["-q", "hello"] >>=
+        rawSystem "nix-env" ["-q", "hello"] >>=
           (`shouldNotBe` ExitSuccess)
