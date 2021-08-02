@@ -14,4 +14,5 @@ jobs:
             /home/runner/.stack
       - run: curl -L https://nixos.org/nix/install | sh
       - run: . /home/runner/.nix-profile/etc/profile.d/nix.sh
+      - run: nix-env -q hello
       - run: stack test
