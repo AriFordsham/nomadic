@@ -3,3 +3,5 @@ on: [push]
 jobs:
   build:
     runs-on: migamake/stack-build-image:17.0
+    steps:
+      - run: stack build
