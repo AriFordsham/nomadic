@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: docker://migamake/stack-build-image:17.0
       - uses: actions/checkout@v5
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           key: "ALL"
           path: |
